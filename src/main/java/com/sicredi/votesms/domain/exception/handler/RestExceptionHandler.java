@@ -1,6 +1,6 @@
 package com.sicredi.votesms.domain.exception.handler;
 
-import com.sicredi.votesms.domain.exception.QuestionException;
+import com.sicredi.votesms.domain.exception.CustomException;
 import com.sicredi.votesms.domain.exception.ResponseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +12,8 @@ import org.springframework.web.reactive.result.method.annotation.ResponseEntityE
 @RestControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(QuestionException.class)
-    public final ResponseEntity<Object> handleQuestionException(final QuestionException exception) {
+    @ExceptionHandler(CustomException.class)
+    public final ResponseEntity<Object> handleCustomException(final CustomException exception) {
         logger.error(exception.getDescription());
 
         ResponseException exceptionResponse = ResponseException.builder()

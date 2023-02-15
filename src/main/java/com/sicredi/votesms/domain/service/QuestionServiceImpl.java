@@ -2,7 +2,7 @@ package com.sicredi.votesms.domain.service;
 
 import com.sicredi.votesms.domain.constants.ValidationConstraints;
 import com.sicredi.votesms.domain.dto.QuestionDto;
-import com.sicredi.votesms.domain.exception.QuestionException;
+import com.sicredi.votesms.domain.exception.CustomException;
 import com.sicredi.votesms.domain.exception.enums.ErrorCodeEnum;
 import com.sicredi.votesms.domain.exception.enums.ErrorMessageEnum;
 import com.sicredi.votesms.domain.mapper.QuestionMapper;
@@ -28,7 +28,7 @@ public class QuestionServiceImpl implements QuestionService {
          return repository.findByDescription(questionDto.getDescription())
                  .handle((question, sink) ->{
                      if (question != null) {
-                         sink.error(new QuestionException(ErrorCodeEnum.QUESTION_ALREADY_EXISTS,
+                         sink.error(new CustomException(ErrorCodeEnum.QUESTION_ALREADY_EXISTS,
                                  ErrorMessageEnum.CONFLICT,
                                  StringUtils.replace(ValidationConstraints.QUESTION_ALREADY_EXISTS, "{}", question.getDescription())
                          ));
