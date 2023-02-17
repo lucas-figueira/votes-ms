@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "9e3e432a-d3ce-4375-8f6c-999580f7937f",
+		"name": "Vote-ms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15001000"
+	},
+	"item": [
+		{
+			"name": "Adicionar Pauta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Pauta\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/questions",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Abrir sessão de votação na pauta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/voting-sessions?question=Pauta&minutesToExpire=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"voting-sessions"
+					],
+					"query": [
+						{
+							"key": "question",
+							"value": "Pauta"
+						},
+						{
+							"key": "minutesToExpire",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar associado",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-vetus-api-token",
+						"value": "0gwq+NSU+yePrZKXRHTe+kHdjxl4ygQV3rfDMyPAyB95ghAnzA7DYyJvBol8SOG70WPo5VxKB8w=",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "Y@5mW8ENR$#6iDAs2t@o&T6z",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cpf\": \"56325258053\",\n    \"name\": \"Richarlison\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/associates",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"associates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar voto na pauta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Pauta\",\n    \"vote\": {\n        \"cpf\": \"56325258053\",\n        \"vote\": \"SIM\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/questions/votes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"questions",
+						"votes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar ganhador da pauta e quantidade de votos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Suarez Grêmio 10001 Gols\",\n    \"vote\": {\n        \"cpf\": \"04992653197\",\n        \"vote\": \"SIM\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/questions/results?question=Pauta",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"questions",
+						"results"
+					],
+					"query": [
+						{
+							"key": "question",
+							"value": "Pauta"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
