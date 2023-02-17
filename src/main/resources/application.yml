@@ -2,3 +2,12 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://votesms:votes123@cluster0.ajxwawu.mongodb.net/votesms
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: GMT-3
+
+
+
+
