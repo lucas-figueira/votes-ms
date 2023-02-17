@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 public enum ErrorMessageEnum {
 
     BAD_REQUEST("Validation failed", HttpStatus.BAD_REQUEST),
+    PRECONDITION_FAILED("Precondition failed", HttpStatus.PRECONDITION_FAILED),
     CONFLICT("Entity already exists",HttpStatus.CONFLICT);
 
     private final String message;
