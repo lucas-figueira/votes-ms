@@ -2,14 +2,12 @@ package com.sicredi.votesms.application;
 
 import com.sicredi.votesms.domain.dto.QuestionDto;
 import com.sicredi.votesms.domain.dto.QuestionResultDto;
-import com.sicredi.votesms.domain.dto.VoteDto;
 import com.sicredi.votesms.domain.model.Question;
 import com.sicredi.votesms.domain.service.QuestionService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor

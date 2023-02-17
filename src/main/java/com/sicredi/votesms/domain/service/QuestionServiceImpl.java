@@ -39,9 +39,7 @@ public class QuestionServiceImpl implements QuestionService {
     @Transactional
     public Mono<QuestionDto> save(final QuestionDto questionDto) {
          return repository.findByDescription(questionDto.getDescription())
-                 .handle((question, sink) ->{
-                     question.validateQuestionAlreadyExists(sink);
-                 }).then(repository.save(mapper.toQuestion(questionDto)))
+                 .handle(Question::validateQuestionAlreadyExists).then(repository.save(mapper.toQuestion(questionDto)))
                  .map(a -> questionDto)
                  .doOnSuccess(question -> log.info("Question "
                          .concat("[")
@@ -67,22 +65,15 @@ public class QuestionServiceImpl implements QuestionService {
                         .map(votingSession -> {
                             votingSession.validateVotingSessionAlreadyClosed(questionDto);
                             return votingSession;
-                        })).flatMap(question -> {
-                            return saveQuestionWithVote(questionDto, questionReturned);
-                    }))
+                        })).flatMap(question ->saveQuestionWithVote(questionDto, questionReturned)))
                 .doOnSuccess(votingSession -> saveQuestionWithVoteSucessLog(questionDto, votingSession));
     }
 
     @Override
     public Mono<QuestionResultDto> calculateQuestionResult(final String question) {
         return validateVotingSessionDoesNotExists(question)
-                .doOnSuccess(votingSession -> {
-                    votingSession.validateVotingSessionIsStillOpen(question);
-                }).then(validateQuestionDoesNotExists(question)
-                        .map(questionResult -> {
-                            QuestionResultDto questionResultDto = questionResult.verifyQuestionResults();
-                            return questionResultDto;
-                        }));
+                .doOnSuccess(votingSession -> votingSession.validateVotingSessionIsStillOpen(question)).then(validateQuestionDoesNotExists(question)
+                        .map(Question::verifyQuestionResults));
     }
 
     private void saveQuestionWithVoteSucessLog(QuestionDto questionDto, Question votingSession) {

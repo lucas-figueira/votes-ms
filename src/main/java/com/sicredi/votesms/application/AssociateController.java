@@ -1,12 +1,7 @@
 package com.sicredi.votesms.application;
 
 import com.sicredi.votesms.domain.dto.AssociateDto;
-import com.sicredi.votesms.domain.dto.QuestionDto;
-import com.sicredi.votesms.domain.model.Associate;
 import com.sicredi.votesms.domain.service.AssociateService;
-import com.sicredi.votesms.domain.service.QuestionService;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

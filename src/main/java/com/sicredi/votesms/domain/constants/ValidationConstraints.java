@@ -1,8 +1,10 @@
 package com.sicredi.votesms.domain.constants;
 
-import lombok.experimental.PackagePrivate;
-
 public final class ValidationConstraints {
+
+    private ValidationConstraints(){
+
+    }
 
     public static final String QUESTION_ALREADY_EXISTS = "Question with description {} already been created";
     public static final String INVALID_CPF = "cpf {} invalid";

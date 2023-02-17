@@ -2,7 +2,12 @@ package com.sicredi.votesms.domain.common;
 
 import java.util.Objects;
 
+
 public class ValidateUtils {
+
+    private ValidateUtils(){
+
+    }
 
     private static final int[] pesoCPF = { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
 

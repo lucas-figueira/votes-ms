@@ -18,11 +18,6 @@ public class QuestionMongoDbRepository implements QuestionRepository {
     }
 
     @Override
-    public Mono<Question> findByDescriptionAndVotesCpf(String description, String cpf) {
-        return questionReactiveSpringDataRepository.findByDescriptionAndVotesCpf(description,cpf);
-    }
-
-    @Override
     public Mono<Question> save(Question entity) {
         return questionReactiveSpringDataRepository.save(entity);
     }

@@ -2,7 +2,6 @@ package com.sicredi.votesms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.reactive.config.EnableWebFlux;
 
 import java.util.TimeZone;
 
