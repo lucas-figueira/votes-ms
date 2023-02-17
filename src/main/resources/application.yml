@@ -2,6 +2,9 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://votesms:votes123@cluster0.ajxwawu.mongodb.net/votesms
+      #string de conexão com o banco
+      #como é só um teste, então deixei visível. Em outra ocasião usaríamos variável de ambiente
+
   jpa:
     properties:
       hibernate:
