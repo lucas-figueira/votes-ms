@@ -4,18 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
+import org.springframework.data.annotation.Id;
 
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class VotingSessionDto {
+public class VoteDto {
 
-    private LocalDateTime startDate;
-
-    private LocalDateTime endDate;
-
-    private String question;
+    private String cpf;
+    private String vote;
 }
